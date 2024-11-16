@@ -12,13 +12,13 @@ public struct DateRangePicker: View {
     var maxDate: Date?
     
     var onTapCancel: (() -> Void)?
-    var onTapSelect: ((_ start: Date?, _ end: Date?) -> Void)?
+    var onTapChoose: ((_ start: Date?, _ end: Date?) -> Void)?
     
-    public init(minDate: Date? = nil, maxDate: Date? = nil, onTapCancel: ( () -> Void)? = nil, onTapSelect: ( (_: Date?, _: Date?) -> Void)? = nil) {
+    public init(minDate: Date? = nil, maxDate: Date? = nil, onTapCancel: ( () -> Void)? = nil, onTapChoose: ( (_: Date?, _: Date?) -> Void)? = nil) {
         self.minDate = minDate
         self.maxDate = maxDate
         self.onTapCancel = onTapCancel
-        self.onTapSelect = onTapSelect
+        self.onTapChoose = onTapChoose
     }
     
     var manager: CalendarManager {
@@ -29,6 +29,6 @@ public struct DateRangePicker: View {
     }
     
     public var body: some View {
-        RangeCalendar(manager: manager, onTapSelect: onTapSelect, onTapCancel: onTapCancel)
+        RangeCalendar(manager: manager, onTapChoose: onTapChoose, onTapCancel: onTapCancel)
     }
 }

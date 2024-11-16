@@ -10,7 +10,7 @@ import SwiftUI
 internal struct RangeCalendar: View {
     @State var manager: CalendarManager
     
-    var onTapSelect: ((_ start: Date?, _ end: Date?) -> Void)?
+    var onTapChoose: ((_ start: Date?, _ end: Date?) -> Void)?
     var onTapCancel: (() -> Void)?
     var numberOfMonth: Int {
         Helpers.numberOfMonths(manager.minimumDate, maxDate: manager.maximumDate)
@@ -38,16 +38,20 @@ internal struct RangeCalendar: View {
                 }
             }
             HStack(alignment: .center, spacing: 20) {
-                Button("Cancel") {
+                Button(action: {
                     onTapCancel?()
+                }) {
+                    Text("Cancel")
+                    .font(.title3)
+                    .fontWeight(.semibold)
                 }
                 .padding()
                 .background(Color.clear)
                 
                 Button(action: {
-                    onTapSelect?(manager.startDate, manager.endDate)
+                    onTapChoose?(manager.startDate, manager.endDate)
                 }) {
-                    Text("Sellect")
+                    Text("Choose")
                         .foregroundStyle(.white)
                         .bold()
                         .font(.title3)
@@ -58,6 +62,7 @@ internal struct RangeCalendar: View {
                 .cornerRadius(.infinity, corners: .allCorners)
             }
         }
+        .padding(.top, 16)
         .background(manager.colors.calendarBack.ignoresSafeArea())    }
 }
 

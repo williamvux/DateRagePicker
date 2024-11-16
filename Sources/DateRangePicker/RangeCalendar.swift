@@ -47,7 +47,7 @@ internal struct RangeCalendar: View {
                 Button(action: {
                     onTapSelect?(manager.startDate, manager.endDate)
                 }) {
-                    Text("Select")
+                    Text("Sellect")
                         .foregroundStyle(.white)
                         .bold()
                         .font(.title3)
